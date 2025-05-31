@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Complaints</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 1rem 0;
+        }
+
+        main {
+            margin-top: 1rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .card {
+            max-width: 400px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="py-4 bg-body-tertiary shadow-sm mb-4 position-relative">
+        <!-- Top-right Dashboard Button -->
+        <a href="{{ url_for('sales_dashboard') }}"
+            class="btn btn-outline-primary position-absolute top-0 end-0 mt-3 me-3">
+            &larr; Dashboard
+        </a>
+
+        <!-- Centered Content -->
+        <div class="text-center">
+            <h4 class="mb-0 text-danger fw-semibold">
+                🛠️ Complaints
+            </h4>
+            <p class="text-secondary fst-italic mb-0">Monitor and Manage Raised Issues</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="mb-4">📋 My Complaints</h2>
+
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Complaint Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in complaints %}
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.subject }}</td>
+                    <td>{{ c.description }}</td>
+                    <td>
+                        {% if c.status == "Resolved" %}
+                        <span class="text-success icon">✔️ Resolved</span>
+                        {% else %}
+                        <span class="text-warning icon">⏳ Pending</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ c.created_at.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

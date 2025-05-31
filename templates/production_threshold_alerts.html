@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Production Threshold Alerts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <style>
+    a.card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.card-link:hover {
+      transform: scale(1.03);
+      transition: transform 0.2s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="production_dashboard">🏭 Production Planner</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="production_pending_requests">📋 Pending Requests</a></li>
+          <li class="nav-item"><a class="nav-link" href="production_threshold_alerts">⚠️ Threshold Alerts</a></li>
+          <li class="nav-item"><a class="nav-link" href="production_live_inventory">📊 Live Inventory</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">🔐 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Page Header -->
+  <header class="py-4 bg-body-tertiary text-center shadow-sm mb-4">
+    <h4 class="mb-0 text-primary fw-semibold">🚨 Threshold Alerts</h4>
+    <p class="text-secondary fst-italic">List of items below minimum stock levels</p>
+  </header>
+
+  <!-- Threshold Alerts Table -->
+  <section class="container mb-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover align-middle text-center">
+            <thead class="table-primary text-center">
+              <tr>
+                <th>📦 Product</th>
+                <th>📊 Current Stock</th>
+                <th>⚠️ Minimum Threshold</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in alerts %}
+              <tr>
+                <td>{{item.product.name}}</td>
+                <td>{{item.available_quantity }}</td>
+                <td>10</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

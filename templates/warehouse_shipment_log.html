@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Warehouse Shipment Log</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="warehouse_dashboard">🏢 Warehouse Officer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="warehouse_pending_requests">📬 Request History</a></li>
+          <li class="nav-item"><a class="nav-link" href="warehouse_threshold_alerts">🚨 Threshold Alerts</a></li>
+          <li class="nav-item"><a class="nav-link" href="warehouse_live_inventory">📦 Live Inventory</a></li>
+          <li class="nav-item"><a class="nav-link" href="warehouse_shipment_log">🚚 Shipment Log</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">🔒 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="py-4 bg-body-tertiary text-center shadow-sm mb-4">
+    <h4 class="mb-0 text-primary fw-semibold">🚚 Shipment Log</h4>
+    <p class="text-secondary fst-italic">Track dispatched items with courier and note details</p>
+  </header>
+
+
+<!-- Shipment Log Table -->
+<section class="container mb-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle text-center">
+          <thead class="table-primary text-center">
+            <tr>
+              <th>🆔 Request ID</th>
+              <th>📅 Shipment Date</th>
+              <th>🔢 Shipped Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if shipments %}
+              {% for shipment in shipments %}
+                <tr>
+                  <td>{{ shipment.request_id }}</td>
+                  <td>{{ shipment.shipment_date.strftime('%Y-%m-%d') if shipment.shipment_date else 'N/A' }}</td>
+                  <td>{{ shipment.shipped_quantity }}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="3">No shipments found.</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

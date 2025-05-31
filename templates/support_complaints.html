@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Support Complaints</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+ 
+
+        <header class="py-4 bg-body-tertiary shadow-sm mb-4 position-relative">
+            <!-- Top-right Dashboard Button -->
+            <a href="{{ url_for('support_dashboard') }}"
+                class="btn btn-outline-primary position-absolute top-0 end-0 mt-3 me-3">
+                &larr; Dashboard
+            </a>
+
+            <!-- Centered Content -->
+            <div class="text-center">
+                <h4 class="mb-0 text-primary fw-semibold">
+                    📋 All Complaints
+                </h4>
+                <p class="text-secondary fst-italic mb-0">Track Inventory Demands</p>
+            </div>
+        </header>
+   <div class="container my-5">
+        <div class="row g-4">
+            <!-- Pending Complaints -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-warning text-dark fw-semibold">Pending Complaints</div>
+                    <div class="card-body p-0">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover mb-0">
+                                <thead class="table-warning text-center">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Sales</th>
+                                        <th>Subject</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for c in complaints if c.status == "Pending" %}
+                                    <tr>
+                                        <td class="text-center">{{ c.id }}</td>
+                                        <td>{{ c.sales_user.username }}</td>
+                                        <td>{{ c.subject }}</td>
+                                        <td>{{ c.description}}</td>
+                                        <td class="text-center">
+                                            <a href="{{ url_for('respond_complaint', complaint_id=c.id) }}"
+                                                class="btn btn-sm btn-success">
+                                                Respond
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fulfilled Complaints -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-success text-white fw-semibold">Resolved Complaints</div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover mb-0">
+                                <thead class="table-success text-center">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Sales</th>
+                                        <th>Subject</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for c in complaints if c.status == "Resolved" %}
+                                    <tr>
+                                        <td class="text-center">{{ c.id }}</td>
+                                        <td>{{ c.sales_user.username }}</td>
+                                        <td>{{ c.subject }}</td>
+                                        <td>{{ c.description}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

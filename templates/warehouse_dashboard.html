@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Warehouse Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <style>
+    a.card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.card-link:hover {
+      transform: scale(1.03);
+      transition: transform 0.2s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="warehouse_dashboard">🏢 Warehouse Officer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="warehouse_pending_requests">📬 Request History</a></li>
+          <li class="nav-item"><a class="nav-link" href="warehouse_threshold_alerts">🚨 Threshold Alerts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="warehouse_live_inventory">📦 Live Inventory</a></li>
+          <li class="nav-item"><a class="nav-link" href="warehouse_shipment_log">🚚 Shipment Log</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">🔒 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary fw-bold">📊 Warehouse Officer Dashboard</h2>
+    <p class="text-center text-muted mb-5">Welcome! Manage inventory, monitor thresholds, and process shipments
+      efficiently.</p>
+
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Pending Requests -->
+      <div class="col-md-3">
+        <a href="warehouse_pending_requests" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-envelope-paper-fill display-4 text-primary"></i>
+              <h5 class="card-title mt-3 fw-semibold">Pending Requests</h5>
+              <p class="card-text text-muted small">View and confirm product requests</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Threshold Alerts -->
+      <div class="col-md-3">
+        <a href="warehouse_threshold_alerts" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-exclamation-triangle-fill display-4 text-warning"></i>
+              <h5 class="card-title mt-3 fw-semibold">Threshold Alerts</h5>
+              <p class="card-text text-muted small">Check stock below minimum level</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Live Inventory -->
+      <div class="col-md-3">
+        <a href="warehouse_live_inventory" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-box-seam display-5 text-success"></i>
+              <h5 class="card-title mt-3 fw-semibold">Live Inventory</h5>
+              <p class="card-text text-muted small">Browse current available stock in the warehouse in real-time.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Shipment Log -->
+      <div class="col-md-3">
+        <a href="warehouse_live_inventory" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-truck-front-fill display-4 text-info"></i>
+              <h5 class="card-title mt-3 fw-semibold">Shipment Log</h5>
+              <p class="card-text text-muted small">View and update shipment records</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

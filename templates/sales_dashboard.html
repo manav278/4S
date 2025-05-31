@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sales Dashboard</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <style>
+    a.card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.card-link:hover {
+      transform: scale(1.03);
+      transition: transform 0.2s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="sales_dashboard">💼 Sales Executive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="sales_raise_request">📝 Raise Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="sales_request_history">📜 Request History</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">🔒 Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Cards -->
+  <div class="container mt-5">
+    <h2 class="text-center text-primary fw-bold mb-4">📊 Sales Executive Dashboard</h2>
+    <p class="text-center text-muted mb-3">Access all key functions from one place.</p>
+
+    <!-- Raise Complaint Button (Right-Aligned) -->
+    <div class="d-flex justify-content-end mb-4">
+      <a href="sales_raise_complaint" class="btn btn-outline-danger fw-semibold rounded-pill">
+        🛠️ Raise Complaint
+      </a>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Card 1: Raise Request -->
+      <div class="col-md-3">
+        <a href="sales_raise_request" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-pencil-square display-5 text-primary"></i>
+              <h5 class="card-title mt-3 fw-semibold">Raise Request</h5>
+              <p class="card-text text-muted small">Submit a new item or service request to the warehouse.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Card 2: Request History -->
+      <div class="col-md-3">
+        <a href="sales_request_history" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-clock-history display-5 text-warning"></i>
+              <h5 class="card-title mt-3 fw-semibold">Request History</h5>
+              <p class="card-text text-muted small">Check the status and timeline of your submitted requests.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Card 3: Analytics -->
+      <div class="col-md-3">
+        <a href="sales_analytics" class="card-link">
+          <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-clipboard-data display-5 text-success"></i>
+              <h5 class="card-title mt-3 fw-semibold">📊 Analytics</h5>
+              <p class="card-text text-muted small">
+                Track inventory demand and request volume to optimize your stock levels effectively and avoid shortages.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Card 4: Analytics -->
+   <div class="col-md-3">
+  <a href="sales_complaints" class="card-link">
+    <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+      <div class="card-body">
+        <i class="bi bi-exclamation-triangle-fill display-5 text-danger"></i>
+        <h5 class="card-title mt-3 fw-semibold">🛠️ Complaints</h5>
+        <p class="card-text text-muted small">
+          View and track complaints you've raised regarding inventory issues, delays, or other concerns.
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

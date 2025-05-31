@@ -1,0 +1,14 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Nunito Sans', 'Open Sans', sans-serif;
+  background-color: #f4f6f9; /* Soft, neutral background */
+  color: #1e1e2f; /* Deep neutral gray for good contrast */
+  font-size: 16px;
+  line-height: 1.6;
+}
