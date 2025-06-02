@@ -147,12 +147,35 @@ def logout():
     return redirect("/")
 
 
+
 # --------------------------- Admin Dashboard ---------------------------
 @app.route("/admin_dashboard")
 @login_required
 @role_required("admin")
 def admin_dashboard():
     return render_template("admin_dashboard.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+@login_required
+@role_required("admin")
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        role = request.form["role"]
+
+        # Check if username already exists
+        if User.query.filter_by(username=username).first():
+            return render_template("register.html", error="Username already exists.")
+
+        # Create new user
+        new_user = User(username=username, password=password, role=role)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect("/")
+
+    return render_template("register.html")
 
 
 
