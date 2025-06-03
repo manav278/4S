@@ -468,6 +468,19 @@ def production_live_inventory():
     inventory = Inventory.query.all()
     return render_template("production_live_inventory.html", inventory=inventory)
 
+@app.route("/increase_inventory/<int:inventory_id>", methods=["POST"])
+@login_required
+@role_required("production")
+def increase_inventory(inventory_id):
+    add_quantity = int(request.form.get("add_quantity", 0))
+    inventory = Inventory.query.get(inventory_id)
+    if inventory and add_quantity > 0:
+        inventory.available_quantity += add_quantity
+        inventory.last_updated = date.today()
+        db.session.commit()
+    return redirect(url_for("production_live_inventory"))
+
+
 @app.route("/production_threshold_alerts")
 @login_required
 @role_required("production")

@@ -42,7 +42,7 @@
   </nav>
 
 
- <!-- Page Heading -->
+  <!-- Page Heading -->
 
   <header class="py-4 bg-body-tertiary text-center shadow-sm mb-4">
     <h4 class="mb-0 text-primary fw-semibold">
@@ -68,6 +68,7 @@
                 <th>Product Name</th>
                 <th>Available Quantity</th>
                 <th>Last Updated</th>
+                <th>Update Product Quantity</th>
               </tr>
             </thead>
             <tbody>
@@ -77,6 +78,19 @@
                 <td>{{ item.product.name}}</td>
                 <td>{{ item.available_quantity }}</td>
                 <td>{{ item.last_updated}}</td>
+                <!-- Add this inside your inventory table row for each item -->
+                <!-- ...existing code... -->
+                <td>
+                  <form action="{{ url_for('increase_inventory', inventory_id=item.inventory_id) }}" method="POST"
+                    class="d-flex align-items-center justify-content-center gap-2 mb-0">
+                    <input type="number" name="add_quantity" min="1" class="form-control form-control-sm w-50"
+                      placeholder="Qty" required>
+                    <button type="submit" class="btn btn-success btn-sm">
+                      <i class="bi bi-plus-circle"></i> Add
+                    </button>
+                  </form>
+                </td>
+                <!-- ...existing code... -->
               </tr>
               {% endfor %}
             </tbody>
